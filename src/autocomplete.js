@@ -40,9 +40,9 @@ export default L.Class.extend({
 		if (!this._container.parentElement) {
 			// See notes section under https://developer.mozilla.org/en-US/docs/Web/API/Window/scrollX
 			// This abomination is required to support all flavors of IE
-			var scrollX = (window?.pageXOffset !== undefined) ? window?.pageXOffset
+			var scrollX = (window.pageXOffset !== undefined) ? window.pageXOffset
 				: (document.documentElement || document.body.parentNode || document.body).scrollLeft;
-			var scrollY = (window?.pageYOffset !== undefined) ? window?.pageYOffset
+			var scrollY = (window.pageYOffset !== undefined) ? window.pageYOffset
 				: (document.documentElement || document.body.parentNode || document.body).scrollTop;
 			this._container.style.left = (rect.left + scrollX) + 'px';
 			this._container.style.top = (rect.bottom + scrollY) + 'px';
