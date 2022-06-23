@@ -70,9 +70,5 @@ const Routing = {
     ...legacyRouting,
 };
 
-L.routing = legacyRouting;
-L.Routing = Routing;
-
 export { Control, Itinerary, Line, OSRMv1, Plan, Waypoint, Autocomplete, Formatter, GeocoderElement, Localization, ItineraryBuilder };
-
 export default Routing;
