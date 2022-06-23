@@ -1,7 +1,7 @@
 {
   "name": "@fleetbase/leaflet-routing-machine",
   "version": "3.2.12",
-  "description": "Routing for Leaflet",
+  "description": "ESM module Routing for Leaflet",
   "directories": {
     "example": "examples",
     "dist": "dist"
@@ -24,14 +24,18 @@
     "name": "Per Liedman",
     "email": "per@liedman.net"
   },
+  "contributors": [
+    {
+      "name": "Ronald A. Richardson",
+      "email": "me@ron.dev",
+      "url": "https://ron.dev/"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fleetbase/leaflet-routing-machine/issues"
   },
   "homepage": "https://github.com/fleetbase/leaflet-routing-machine",
-  "browserify-shim": {
-    "leaflet": "global:L"
-  },
   "main": "./dist/@fleetbase/leaflet-routing-machine.min.js",
   "devDependencies": {
     "@babel/core": "^7.14.0",
@@ -43,10 +47,6 @@
     "@babel/register": "^7.13.16",
     "@rollup/plugin-babel": "^5.3.0",
     "@rollup/plugin-node-resolve": "^13.0.5",
-    "browserify": "^14.1.0",
-    "browserify-derequire": "^0.9.4",
-    "browserify-shim": "^3.8.13",
-    "derequire": "^2.0.6",
     "leaflet": "^1.8.0",
     "rollup": "^2.75.7",
     "rollup-plugin-eslint": "^5.1.0",
