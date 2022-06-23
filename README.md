@@ -62,7 +62,7 @@ yarn add @fleetbase/leaflet-routing-machine
 
 ```javascript
 import * as L from 'leaflet';
-import { OSRMv1, Control as RoutingControl } from 'leaflet-routing-machine';
+import { OSRMv1, Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
 
 const map = new L.Map();
 const serviceUrl = 'https://us.routing.fleetbase.io';
