@@ -12,7 +12,6 @@ import Localization from './localization';
 import ItineraryBuilder from './itinerary-builder';
 import Mapbox from './mapbox';
 import ErrorControl from './error-control';
-import { set } from './utils';
 
 const legacyRouting = {
     control: function(options) { return new Control(options); },
@@ -69,8 +68,8 @@ const Routing = {
     ...legacyRouting
 };
 
-set(L, 'routing', legacyRouting);
-set(L, 'Routing', Routing);
+L.routing = legacyRouting;
+L.Routing = Routing;
 
 export {
     Control,
