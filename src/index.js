@@ -1,3 +1,4 @@
+import * as L from 'leaflet';
 import Control from './control';
 import Itinerary from './itinerary';
 import Line from './line';
@@ -68,11 +69,11 @@ const Routing = {
     ...legacyRouting
 };
 
-if (window?.L !== undefined)
-{
-    set(window.L, 'routing', legacyRouting);
-    set(window.L, 'Routing', Routing);
-}
+// if (L)
+// {
+//     set(L, 'routing', legacyRouting);
+//     set(L, 'Routing', Routing);
+// }
 
 export {
     Control,
