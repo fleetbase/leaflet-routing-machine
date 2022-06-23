@@ -1,4 +1,4 @@
-import * as L from 'leaflet';
+import 'leaflet';
 import Control from './control';
 import Itinerary from './itinerary';
 import Line from './line';
@@ -69,8 +69,8 @@ const Routing = {
     ...legacyRouting
 };
 
-set(L, 'routing', legacyRouting);
-set(L, 'Routing', Routing);
+L.routing = legacyRouting;
+L.Routing = Routing;
 
 export {
     Control,
