@@ -12,7 +12,7 @@ npm install
 echo Done.
 
 git add dist/* -f
-git add bower.json -f
+# git add bower.json -f
 
 git commit -m "v$VERSION"
 

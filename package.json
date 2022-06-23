@@ -1,5 +1,5 @@
 {
-  "name": "leaflet-routing-machine",
+  "name": "@fleetbase/leaflet-routing-machine",
   "version": "3.2.12",
   "description": "Routing for Leaflet",
   "directories": {
@@ -7,7 +7,6 @@
     "dist": "dist"
   },
   "scripts": {
-    "prepare": "browserify -t browserify-shim -p browserify-derequire -o dist/leaflet-routing-machine.js src/index.js && uglifyjs dist/leaflet-routing-machine.js >dist/leaflet-routing-machine.min.js",
     "publish": "scripts/publish.sh",
     "bundle": "rollup -c",
     "dev": "rollup -c -w",
@@ -15,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/perliedman/leaflet-routing-machine.git"
+    "url": "git://github.com/fleetbase/leaflet-routing-machine.git"
   },
   "keywords": [
     "leaflet",
@@ -28,13 +27,13 @@
   },
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/perliedman/leaflet-routing-machine/issues"
+    "url": "https://github.com/fleetbase/leaflet-routing-machine/issues"
   },
-  "homepage": "https://github.com/perliedman/leaflet-routing-machine",
+  "homepage": "https://github.com/fleetbase/leaflet-routing-machine",
   "browserify-shim": {
     "leaflet": "global:L"
   },
-  "main": "./dist/leaflet-routing-machine.js",
+  "main": "./dist/leaflet-routing-machine.min.js",
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
@@ -49,6 +48,7 @@
     "browserify-derequire": "^0.9.4",
     "browserify-shim": "^3.8.13",
     "derequire": "^2.0.6",
+    "leaflet": "^1.8.0",
     "rollup": "^2.75.7",
     "rollup-plugin-eslint": "^5.1.0",
     "rollup-plugin-terser": "^7.0.2",

@@ -6,6 +6,12 @@ import babel from '@rollup/plugin-babel';
 import pkg from './package.json';
 
 const input = ['src/index.js'];
+const globals = {
+    leaflet: 'L',
+    '@mapbox/corslite': 'corslite',
+    '@mapbox/polyline': 'polyline',
+    'osrm-text-instructions': 'getOsrmTextInstructions'
+};
 
 export default [
     {
@@ -17,8 +23,8 @@ export default [
                 modulesOnly: true,
             }),
             babel({
-				babelHelpers: 'bundled',
-			}),
+                babelHelpers: 'bundled',
+            }),
             terser(),
         ],
         output: [
@@ -29,13 +35,14 @@ export default [
                 esModule: false,
                 exports: 'named',
                 sourcemap: true,
+                globals,
             },
         ],
         watch: {
             exclude: ['node_modules/**'],
             include: ['lib/**'],
         },
-        external: ['@mapbox/corslite', '@mapbox/polyline']
+        external: ['@mapbox/corslite', '@mapbox/polyline', 'osrm-text-instructions', 'leaflet'],
     },
     {
         // esm and cjs
@@ -45,10 +52,10 @@ export default [
                 browser: true,
                 modulesOnly: true,
             }),
-			babel({
-				babelHelpers: 'bundled',
-			}),
-			terser()
+            babel({
+                babelHelpers: 'bundled',
+            }),
+            terser(),
         ],
         output: [
             {
@@ -56,14 +63,16 @@ export default [
                 format: 'esm',
                 exports: 'named',
                 sourcemap: true,
+                globals,
             },
             {
                 dir: 'dist/cjs',
                 format: 'cjs',
                 exports: 'named',
                 sourcemap: true,
+                globals,
             },
         ],
-        external: ['@mapbox/corslite', '@mapbox/polyline']
+        external: ['@mapbox/corslite', '@mapbox/polyline', 'osrm-text-instructions', 'leaflet'],
     },
 ];

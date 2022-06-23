@@ -1,19 +1,20 @@
-var L = require('leaflet'),
-    Control = require('./control'),
-    Itinerary = require('./itinerary'),
-    Line = require('./line'),
-    OSRMv1 = require('./osrm-v1'),
-    Plan = require('./plan'),
-    Waypoint = require('./waypoint'),
-    Autocomplete = require('./autocomplete'),
-    Formatter = require('./formatter'),
-    GeocoderElement = require('./geocoder-element'),
-    Localization = require('./localization'),
-    ItineraryBuilder = require('./itinerary-builder'),
-    Mapbox = require('./mapbox'),
-    ErrorControl = require('./error-control');
+import * as L from 'leaflet';
+import Control from './control';
+import Itinerary from './itinerary';
+import Line from './line';
+import OSRMv1 from './osrm-v1';
+import Plan from './plan';
+import Waypoint from './waypoint';
+import Autocomplete from './autocomplete';
+import Formatter from './formatter';
+import GeocoderElement from './geocoder-element';
+import Localization from './localization';
+import ItineraryBuilder from './itinerary-builder';
+import Mapbox from './mapbox';
+import ErrorControl from './error-control';
+import { set } from './utils';
 
-L.routing = {
+const legacyRouting = {
     control: function(options) { return new Control(options); },
     itinerary: function(options) {
         return Itinerary(options);
@@ -53,7 +54,7 @@ L.routing = {
     }
 };
 
-module.exports = L.Routing = {
+const Routing = {
     Control: Control,
     Itinerary: Itinerary,
     Line: Line,
@@ -65,15 +66,25 @@ module.exports = L.Routing = {
     GeocoderElement: GeocoderElement,
     Localization: Localization,
     ItineraryBuilder: ItineraryBuilder,
-
-    // Legacy; remove these in next major release
-    control: L.routing.control,
-    itinerary: L.routing.itinerary,
-    line: L.routing.line,
-    plan: L.routing.plan,
-    waypoint: L.routing.waypoint,
-    osrmv1: L.routing.osrmv1,
-    geocoderElement: L.routing.geocoderElement,
-    mapbox: L.routing.mapbox,
-    errorControl: L.routing.errorControl,
+    ...legacyRouting
 };
+
+set(L, 'routing', legacyRouting);
+set(L, 'Routing', Routing);
+
+export {
+    Control,
+    Itinerary,
+    Line,
+    OSRMv1,
+    Plan,
+    Waypoint,
+    Autocomplete,
+    Formatter,
+    GeocoderElement,
+    Localization,
+    ItineraryBuilder
+};
+
+export default Routing;
+
