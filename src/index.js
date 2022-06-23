@@ -13,19 +13,6 @@ import ItineraryBuilder from './itinerary-builder';
 import Mapbox from './mapbox';
 import ErrorControl from './error-control';
 
-const assign = (obj, prop, value) => {
-    if (typeof prop === 'string') {
-        prop = prop.split('.');
-    }
-
-    if (prop.length > 1) {
-        var e = prop.shift();
-        assign((obj[e] = Object.prototype.toString.call(obj[e]) === '[object Object]' ? obj[e] : {}), prop, value);
-    } else {
-        obj[prop[0]] = value;
-    }
-};
-
 const legacyRouting = {
     control: function (options) {
         return new Control(options);
@@ -83,8 +70,8 @@ const Routing = {
     ...legacyRouting,
 };
 
-assign(L, 'routing', legacyRouting);
-assign(L, 'Routing', Routing);
+L.routing = legacyRouting;
+L.Routing = Routing;
 
 export { Control, Itinerary, Line, OSRMv1, Plan, Waypoint, Autocomplete, Formatter, GeocoderElement, Localization, ItineraryBuilder };
 
