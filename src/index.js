@@ -13,44 +13,59 @@ import ItineraryBuilder from './itinerary-builder';
 import Mapbox from './mapbox';
 import ErrorControl from './error-control';
 
+const assign = (obj, prop, value) => {
+    if (typeof prop === 'string') {
+        prop = prop.split('.');
+    }
+
+    if (prop.length > 1) {
+        var e = prop.shift();
+        assign((obj[e] = Object.prototype.toString.call(obj[e]) === '[object Object]' ? obj[e] : {}), prop, value);
+    } else {
+        obj[prop[0]] = value;
+    }
+};
+
 const legacyRouting = {
-    control: function(options) { return new Control(options); },
-    itinerary: function(options) {
+    control: function (options) {
+        return new Control(options);
+    },
+    itinerary: function (options) {
         return Itinerary(options);
     },
-    line: function(route, options) {
+    line: function (route, options) {
         return new Line(route, options);
     },
-    plan: function(waypoints, options) {
+    plan: function (waypoints, options) {
         return new Plan(waypoints, options);
     },
-    waypoint: function(latLng, name, options) {
+    waypoint: function (latLng, name, options) {
         return new Waypoint(latLng, name, options);
     },
-    osrmv1: function(options) {
+    osrmv1: function (options) {
         return new OSRMv1(options);
     },
-    localization: function(options) {
+    localization: function (options) {
         return new Localization(options);
     },
-    formatter: function(options) {
+    formatter: function (options) {
         return new Formatter(options);
     },
-    geocoderElement: function(wp, i, nWps, plan) {
+    geocoderElement: function (wp, i, nWps, plan) {
         return new GeocoderElement(wp, i, nWps, plan);
     },
-    itineraryBuilder: function(options) {
+    itineraryBuilder: function (options) {
         return new ItineraryBuilder(options);
     },
-    mapbox: function(accessToken, options) {
+    mapbox: function (accessToken, options) {
         return new Mapbox(accessToken, options);
     },
-    errorControl: function(routingControl, options) {
+    errorControl: function (routingControl, options) {
         return new ErrorControl(routingControl, options);
     },
-    autocomplete: function(elem, callback, context, options) {
+    autocomplete: function (elem, callback, context, options) {
         return new Autocomplete(elem, callback, context, options);
-    }
+    },
 };
 
 const Routing = {
@@ -65,25 +80,12 @@ const Routing = {
     GeocoderElement: GeocoderElement,
     Localization: Localization,
     ItineraryBuilder: ItineraryBuilder,
-    ...legacyRouting
+    ...legacyRouting,
 };
 
-L.routing = legacyRouting;
-L.Routing = Routing;
+assign(L, 'routing', legacyRouting);
+assign(L, 'Routing', Routing);
 
-export {
-    Control,
-    Itinerary,
-    Line,
-    OSRMv1,
-    Plan,
-    Waypoint,
-    Autocomplete,
-    Formatter,
-    GeocoderElement,
-    Localization,
-    ItineraryBuilder
-};
+export { Control, Itinerary, Line, OSRMv1, Plan, Waypoint, Autocomplete, Formatter, GeocoderElement, Localization, ItineraryBuilder };
 
 export default Routing;
-
