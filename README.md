@@ -36,33 +36,39 @@ For questions and discussions, you might want to look at [the Leaflet Routing Ma
 ## Building
 
 ```sh
-npm install
+yarn bundle
 ```
 
-This requires [Node and npm](http://nodejs.org/), as well as `grunt`.
+This requires [Node and npm](http://nodejs.org/), or `yarn`.
 
 # Usage
 
-Download [latest release](https://github.com/perliedman/leaflet-routing-machine/releases), or obtain the latest release via [unpkg.com](https://unpkg.com/).
+Download [latest release](https://github.com/fleetbase/leaflet-routing-machine/releases), or obtain the latest release via [unpkg.com](https://unpkg.com/).
 
 ```html
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
 <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
 ```
 
-or via npm:
+or via npm/yarn:
 
 ```sh
-npm install --save leaflet-routing-machine
+npm install --save @fleetbase/leaflet-routing-machine
+```
+
+```sh
+yarn add @fleetbase/leaflet-routing-machine
 ```
 
 ```javascript
-var L = require('leaflet');
-require('leaflet-routing-machine');
+import * as L from 'leaflet';
+import { OSRMv1, Control as RoutingControl } from 'leaflet-routing-machine';
 
-...
+const map = new L.Map();
+const serviceUrl = 'https://us.routing.fleetbase.io';
+const router = new OSRMv1({ serviceUrl, profile: 'driving' });
+const routingControl = new RoutingControl({ waypoints: [...], router }).addTo(leafletMap);
+
 ```
-
-LRM attaches itself onto `L`.
 
 __Go to the [Leaflet Routing Machine site](http://www.liedman.net/leaflet-routing-machine/) for more information, demos, tutorials and more.__
