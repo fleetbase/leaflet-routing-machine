@@ -1,59 +1,61 @@
-var L = require('leaflet'),
-    Control = require('./control'),
-    Itinerary = require('./itinerary'),
-    Line = require('./line'),
-    OSRMv1 = require('./osrm-v1'),
-    Plan = require('./plan'),
-    Waypoint = require('./waypoint'),
-    Autocomplete = require('./autocomplete'),
-    Formatter = require('./formatter'),
-    GeocoderElement = require('./geocoder-element'),
-    Localization = require('./localization'),
-    ItineraryBuilder = require('./itinerary-builder'),
-    Mapbox = require('./mapbox'),
-    ErrorControl = require('./error-control');
+import * as L from 'leaflet';
+import Control from './control';
+import Itinerary from './itinerary';
+import Line from './line';
+import OSRMv1 from './osrm-v1';
+import Plan from './plan';
+import Waypoint from './waypoint';
+import Autocomplete from './autocomplete';
+import Formatter from './formatter';
+import GeocoderElement from './geocoder-element';
+import Localization from './localization';
+import ItineraryBuilder from './itinerary-builder';
+import Mapbox from './mapbox';
+import ErrorControl from './error-control';
 
-L.routing = {
-    control: function(options) { return new Control(options); },
-    itinerary: function(options) {
+const legacyRouting = {
+    control: function (options) {
+        return new Control(options);
+    },
+    itinerary: function (options) {
         return Itinerary(options);
     },
-    line: function(route, options) {
+    line: function (route, options) {
         return new Line(route, options);
     },
-    plan: function(waypoints, options) {
+    plan: function (waypoints, options) {
         return new Plan(waypoints, options);
     },
-    waypoint: function(latLng, name, options) {
+    waypoint: function (latLng, name, options) {
         return new Waypoint(latLng, name, options);
     },
-    osrmv1: function(options) {
+    osrmv1: function (options) {
         return new OSRMv1(options);
     },
-    localization: function(options) {
+    localization: function (options) {
         return new Localization(options);
     },
-    formatter: function(options) {
+    formatter: function (options) {
         return new Formatter(options);
     },
-    geocoderElement: function(wp, i, nWps, plan) {
-        return new L.Routing.GeocoderElement(wp, i, nWps, plan);
+    geocoderElement: function (wp, i, nWps, plan) {
+        return new GeocoderElement(wp, i, nWps, plan);
     },
-    itineraryBuilder: function(options) {
+    itineraryBuilder: function (options) {
         return new ItineraryBuilder(options);
     },
-    mapbox: function(accessToken, options) {
+    mapbox: function (accessToken, options) {
         return new Mapbox(accessToken, options);
     },
-    errorControl: function(routingControl, options) {
+    errorControl: function (routingControl, options) {
         return new ErrorControl(routingControl, options);
     },
-    autocomplete: function(elem, callback, context, options) {
+    autocomplete: function (elem, callback, context, options) {
         return new Autocomplete(elem, callback, context, options);
-    }
+    },
 };
 
-module.exports = L.Routing = {
+const Routing = {
     Control: Control,
     Itinerary: Itinerary,
     Line: Line,
@@ -65,15 +67,8 @@ module.exports = L.Routing = {
     GeocoderElement: GeocoderElement,
     Localization: Localization,
     ItineraryBuilder: ItineraryBuilder,
-
-    // Legacy; remove these in next major release
-    control: L.routing.control,
-    itinerary: L.routing.itinerary,
-    line: L.routing.line,
-    plan: L.routing.plan,
-    waypoint: L.routing.waypoint,
-    osrmv1: L.routing.osrmv1,
-    geocoderElement: L.routing.geocoderElement,
-    mapbox: L.routing.mapbox,
-    errorControl: L.routing.errorControl,
+    ...legacyRouting,
 };
+
+export { Control, Itinerary, Line, OSRMv1, Plan, Waypoint, Autocomplete, Formatter, GeocoderElement, Localization, ItineraryBuilder };
+export default Routing;
