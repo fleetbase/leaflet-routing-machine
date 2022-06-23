@@ -7,7 +7,6 @@
     "dist": "dist"
   },
   "scripts": {
-    "publish": "scripts/publish.sh",
     "bundle": "rollup -c",
     "dev": "rollup -c -w",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -33,7 +32,7 @@
   "browserify-shim": {
     "leaflet": "global:L"
   },
-  "main": "./dist/leaflet-routing-machine.min.js",
+  "main": "./dist/@fleetbase/leaflet-routing-machine.min.js",
   "devDependencies": {
     "@babel/core": "^7.14.0",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
