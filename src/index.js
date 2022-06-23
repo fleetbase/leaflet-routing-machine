@@ -38,7 +38,7 @@ const legacyRouting = {
         return new Formatter(options);
     },
     geocoderElement: function(wp, i, nWps, plan) {
-        return new L.Routing.GeocoderElement(wp, i, nWps, plan);
+        return new GeocoderElement(wp, i, nWps, plan);
     },
     itineraryBuilder: function(options) {
         return new ItineraryBuilder(options);
@@ -69,11 +69,8 @@ const Routing = {
     ...legacyRouting
 };
 
-// if (L)
-// {
-//     set(L, 'routing', legacyRouting);
-//     set(L, 'Routing', Routing);
-// }
+set(L, 'routing', legacyRouting);
+set(L, 'Routing', Routing);
 
 export {
     Control,
