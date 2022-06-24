@@ -1,4 +1,3 @@
-import * as L from 'leaflet';
 import OSRMv1 from './osrm-v1';
 
 /**

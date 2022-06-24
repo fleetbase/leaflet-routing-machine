@@ -1,4 +1,3 @@
-import * as L from 'leaflet';
 import Localization from './localization';
 
 export default L.Class.extend({

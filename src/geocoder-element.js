@@ -1,4 +1,3 @@
-import * as L from 'leaflet';
 import Autocomplete from './autocomplete';
 import Localization from './localization';
 

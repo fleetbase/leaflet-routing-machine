@@ -1,4 +1,3 @@
-import * as L from 'leaflet';
 import Formatter from './formatter';
 import ItineraryBuilder from './itinerary-builder';
 

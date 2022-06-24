@@ -1,5 +1,3 @@
-import * as L from 'leaflet';
-
 /* 
    NOTICE
    Since version 3.2.5, the functionality in this file is by

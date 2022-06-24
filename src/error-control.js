@@ -1,5 +1,3 @@
-import * as L from 'leaflet';
-
 export default L.Control.extend({
     options: {
         header: 'Routing error',

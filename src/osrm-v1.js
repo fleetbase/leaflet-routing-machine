@@ -1,4 +1,3 @@
-import * as L from 'leaflet';
 import corslite from '@mapbox/corslite';
 import polyline from '@mapbox/polyline';
 import getOsrmTextInstructions from 'osrm-text-instructions';

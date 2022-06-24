@@ -1,4 +1,3 @@
-import * as L from 'leaflet';
 import Control from './control';
 import Itinerary from './itinerary';
 import Line from './line';

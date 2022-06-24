@@ -1,4 +1,3 @@
-import * as L from 'leaflet';
 import GeocoderElement from './geocoder-element';
 import Waypoint from './waypoint';
 
