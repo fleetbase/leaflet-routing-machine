@@ -146,20 +146,14 @@ export default Itinerary.extend({
         try {
             mapSize = this._map.getSize();
 
-            console.log('[Control #wps]', wps);
-
             for (i = 0; i < wps.length; i++) {
                 p = this._map.latLngToLayerPoint(wps[i].latLng);
-
-                console.log('[Control for () #p]', p);
 
                 if (bounds) {
                     bounds.extend(p);
                 } else {
                     bounds = L.bounds([p]);
                 }
-
-                console.log('[Control for () #bounds]', bounds);
             }
 
             boundsSize = bounds.getSize();
@@ -220,7 +214,6 @@ export default Itinerary.extend({
                 this.options.lineOptions
             )
         );
-        console.log('[_updateLines() #this._line', this._line);
         this._line.addTo(this._map);
         this._hookEvents(this._line);
     },

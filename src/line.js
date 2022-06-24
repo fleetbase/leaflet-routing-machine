@@ -82,9 +82,7 @@ export default L.LayerGroup.extend({
         var i, pl;
 
         for (i = 0; i < styles.length; i++) {
-            console.log('[_addSegment for() #i #coords]', i, coords);
             pl = L.polyline(coords, styles[i]);
-            console.log('[_addSegment for() #pl]', pl);
             this.addLayer(pl);
             if (mouselistener) {
                 pl.on('mousedown', this._onLineTouched, this);
