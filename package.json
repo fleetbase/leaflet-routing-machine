@@ -1,6 +1,6 @@
 {
   "name": "@fleetbase/leaflet-routing-machine",
-  "version": "3.2.13",
+  "version": "3.2.14",
   "description": "ESM module Routing for Leaflet",
   "directories": {
     "example": "examples",
