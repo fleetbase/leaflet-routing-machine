@@ -18,14 +18,16 @@ export default BaseClass.extend({
         reverseWaypoints: false,
         addButtonClassName: '',
         language: 'en',
+        markerOptions: {},
         createGeocoderElement: function (wp, i, nWps, plan) {
             return new GeocoderElement(wp, i, nWps, plan);
         },
-        createMarker: function (i, wp) {
-            var options = {
-                    draggable: this.draggableWaypoints,
-                },
-                marker = L.marker(wp.latLng, options);
+        createMarker: function (i, wp, waypointIndex, markerOptions = {}) {
+            const options = {
+                draggable: this.draggableWaypoints,
+                ...markerOptions,
+            };
+            const marker = L.marker(wp.latLng, options);
 
             return marker;
         },
@@ -227,7 +229,7 @@ export default BaseClass.extend({
 
         for (i = 0; i < this._waypoints.length; i++) {
             if (this._waypoints[i].latLng) {
-                m = this.options.createMarker(i, this._waypoints[i], this._waypoints.length);
+                m = this.options.createMarker(i, this._waypoints[i], this._waypoints.length, this.options.markerOptions);
                 if (m) {
                     m.addTo(this._map);
                     if (this.options.draggableWaypoints) {
@@ -312,7 +314,7 @@ export default BaseClass.extend({
         var wp = new Waypoint(initialLatLng),
             prevWp = this._waypoints[newWpIndex - 1],
             nextWp = this._waypoints[newWpIndex],
-            marker = this.options.createMarker(newWpIndex, wp, this._waypoints.length + 1),
+            marker = this.options.createMarker(newWpIndex, wp, this._waypoints.length + 1, this.options.markerOptions),
             lines = [],
             draggingEnabled = this._map.dragging.enabled(),
             mouseMove = L.bind(function (e) {

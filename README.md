@@ -65,9 +65,30 @@ import * as L from 'leaflet';
 import { OSRMv1, Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
 
 const map = new L.Map();
-const serviceUrl = 'https://us.routing.fleetbase.io';
+const serviceUrl = 'https://routing.fleetbase.io';
 const router = new OSRMv1({ serviceUrl, profile: 'driving' });
 const routingControl = new RoutingControl({ waypoints: [...], router }).addTo(leafletMap);
+
+```
+
+## Customize Waypoint Markers
+
+You can now customize waypoint markers with `markerOptions` option for the `RoutingControl`.
+
+```javascript
+import * as L from 'leaflet';
+import { OSRMv1, Control as RoutingControl } from '@fleetbase/leaflet-routing-machine';
+
+const map = new L.Map();
+const serviceUrl = 'https://routing.fleetbase.io';
+const router = new OSRMv1({ serviceUrl, profile: 'driving' });
+const routingControl = new RoutingControl({ 
+    waypoints: [...], 
+    markerOptions: {
+        icon: L.icon({ ... })
+    },
+    router 
+}).addTo(leafletMap);
 
 ```
 

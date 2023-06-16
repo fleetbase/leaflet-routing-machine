@@ -14,6 +14,7 @@ export default Itinerary.extend({
         routeDragInterval: 500,
         waypointMode: 'connect',
         showAlternatives: false,
+        markerOptions: {},
         defaultErrorHandler: function (e) {
             console.error('Routing error:', e.error);
         },
