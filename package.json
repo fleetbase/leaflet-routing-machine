@@ -9,7 +9,9 @@
   "scripts": {
     "bundle": "rollup -c",
     "dev": "rollup -c -w",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish:npm": "npm config set registry https://registry.npmjs.org/ && npm publish",
+    "publish:github": "npm config set '@fleetbase:registry' https://npm.pkg.github.com/ && npm publish"
   },
   "repository": {
     "type": "git",
