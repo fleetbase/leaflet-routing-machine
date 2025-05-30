@@ -363,7 +363,7 @@ export default Itinerary.extend({
     },
 
     _clearLines: function () {
-        if (this._line) {
+        if (this._line && this._map) {
             this._map.removeLayer(this._line);
             delete this._line;
         }
