@@ -69,8 +69,13 @@ jobs:
           node-version: 18.x
           cache: 'yarn'
 
+      - name: Enable Corepack & activate Yarn 3.6.4
+        run: |
+          corepack enable
+          corepack prepare yarn@3.6.4 --activate
+
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Build
         run: yarn bundle
